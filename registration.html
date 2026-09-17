@@ -58,6 +58,15 @@
         .submit:hover{background:#273b2d}
         .note{margin-top:12px;font-size:11px;color:#85998a;text-align:center}
         
+        /* Style untuk Popup Sukses Berhasil Kirim */
+        .success-modal {display:none;position:fixed;inset:0;z-index:1100;background:rgba(39,59,45,.55);backdrop-filter: blur(3px);align-items:center;justify-content:center;padding:20px}
+        .success-modal.show {display:flex}
+        .success-box {background:#fff;padding:40px;border-radius:14px;text-align:center;max-width:400px;width:100%;border-top:6px solid #3b5e47;box-shadow:0 10px 25px rgba(0,0,0,0.1)}
+        .success-box h3 {font-family:"Playfair Display",serif;font-size:28px;color:#273b2d;margin-bottom:10px}
+        .success-box p {color:#64786a;font-size:15px;margin-bottom:25px}
+        .success-btn {background:#3b5e47;color:#f6e6ad;border:0;padding:12px 24px;font:inherit;font-weight:700;border-radius:8px;cursor:pointer;width:100%}
+        .success-btn:hover {background:#273b2d}
+
         @media(max-width:800px){
             .cards{grid-template-columns:1fr}
             .admission-box{flex-direction:column;align-items:flex-start;padding:32px}
@@ -106,19 +115,17 @@
         </section>
     </main>
 
-    <!-- Modal Form Pendaftaran (Terhubung Langsung ke Email) -->
+    <!-- Modal Form Pendaftaran -->
     <div class="modal" id="registrationModal" aria-hidden="true">
         <div class="modal-box">
             <button class="close" id="closeForm" aria-label="Close">&times;</button>
             <h2>Request the Registration Form</h2>
             <p class="intro">Please fill in your basic information. Your request will be sent directly to our email.</p>
 
-            <!-- FORM DENGAN FORMSUBMIT KE pedrawr3@gmail.com -->
-            <form action="https://formsubmit.co/pedrawr3@gmail.com" method="POST">
-                <!-- Pengaturan Tambahan FormSubmit -->
+            <!-- FORM DENGAN AJAX SUBMISSION -->
+            <form id="ajaxForm" action="https://formsubmit.co/ajax/pedrawr3@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Pendaftaran Siswa Baru - Art & Music School">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
 
                 <div class="field">
                     <label for="name">Full Name</label>
@@ -143,9 +150,18 @@
                     <input id="phone" name="Phone Number" type="tel" placeholder="+62..." required>
                 </div>
 
-                <button class="submit" type="submit">Send Request</button>
+                <button class="submit" id="submitBtn" type="submit">Send Request</button>
                 <p class="note">Data will be sent securely to us.</p>
             </form>
+        </div>
+    </div>
+
+    <!-- Modal Pop-up Pesan Sukses Berhasil Kirim -->
+    <div class="success-modal" id="successModal">
+        <div class="success-box">
+            <h3>Thank You!</h3>
+            <p>Your request has been sent successfully. Our team will contact you soon.</p>
+            <button class="success-btn" id="closeSuccess">OK</button>
         </div>
     </div>
 
@@ -153,6 +169,10 @@
         const modal = document.getElementById("registrationModal");
         const openBtn = document.getElementById("openForm");
         const closeBtn = document.getElementById("closeForm");
+        const ajaxForm = document.getElementById("ajaxForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const successModal = document.getElementById("successModal");
+        const closeSuccess = document.getElementById("closeSuccess");
 
         openBtn.addEventListener("click", () => {
             modal.classList.add("show");
@@ -171,9 +191,49 @@
             }
         });
 
+        // Script untuk mengirim data ke email secara diam-diam (Tanpa pindah halaman)
+        ajaxForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(ajaxForm);
+
+            fetch(ajaxForm.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    modal.classList.remove("show"); // Tutup form pendaftaran
+                    ajaxForm.reset(); // Kosongkan input form
+                    successModal.classList.add("show"); // Munculkan pop-up sukses
+                } else {
+                    alert("Oops! Terjadi kesalahan saat mengirim data.");
+                }
+            })
+            .catch(error => {
+                alert("Gagal terhubung ke server.");
+            })
+            .finally(() => {
+                submitBtn.textContent = "Send Request";
+                submitBtn.disabled = false;
+            });
+        });
+
+        // Tombol OK pada pop-up sukses
+        closeSuccess.addEventListener("click", () => {
+            successModal.classList.remove("show");
+        });
+
         document.addEventListener("keydown", e => {
             if (e.key === "Escape") {
                 modal.classList.remove("show");
+                successModal.classList.remove("show");
                 modal.setAttribute("aria-hidden", "true");
             }
         });
