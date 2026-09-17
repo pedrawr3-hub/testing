@@ -1,556 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Art & Music School</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-
     <header class="navbar">
-
-        <div class="logo">
-            <a href="#beranda">
-                A&M<span>SCHOOL</span>
-            </a>
-        </div>
-
+        <div class="logo"><a href="#beranda">A&M<span>SCHOOL</span></a></div>
         <nav>
             <ul class="nav-menu">
-
-                <li>
-                    <a href="#beranda">Homepage</a>
-                </li>
-
-                <li>
-                    <a href="#profil">Profile</a>
-                </li>
-
-                <li>
-                    <a href="#kegiatan">Activity</a>
-                </li>
-
-                <li>
-                    <a href="#spbm">New Student Information</a>
-                </li>
-
-                <li>
-                    <a href="#kontak">Contact</a>
-                </li>
-
+                <li><a href="#beranda">Homepage</a></li>
+                <li><a href="#profil">Profile</a></li>
+                <li><a href="#kegiatan">Activity</a></li>
+                <li><a href="#spbm">New Student Information</a></li>
+                <li><a href="#kontak">Contact</a></li>
             </ul>
         </nav>
-
-        <!-- Tombol mobile -->
-        <button class="menu-toggle">
-            ☰
-        </button>
-
     </header>
 
     <main>
-
         <section class="hero" id="beranda">
-
             <div class="hero-content">
-
-                <span class="hero-label">
-                    Welcome
-                </span>
-
-                <h1>
-                    Art & Music
-                    <span>School</span>
-                    Junior & High
-                </h1>
-
-                <p>
-                    Place where your dream can be true.
-                    This is the first step for your new journal.
-                </p>
-
-                <a href="#profil" class="hero-button">
-                    Get to know about us
-                    <span>→</span>
-                </a>
-
+                <span class="hero-label" id="txt-hero_welcome">Welcome</span>
+                <h1 id="txt-hero_title">Art & Music School Junior & High</h1>
+                <p id="txt-hero_desc">Place where your dream can be true...</p>
+                <a href="#profil" class="hero-button">Get to know about us <span>→</span></a>
             </div>
-
-
-            <div class="hero-image">
-
-                <img
-                    src="https://www.prov.org/wp-content/uploads/2023/07/High-School-Girls-in-class-1366x1025.jpg"
-                    alt="Gedung Sekolah">
-
-            </div>
-
         </section>
-
-
-        <!-- =========================
-             INTRO
-        ========================== -->
 
         <section class="intro">
-
-            <span class="section-label">
-                Our Vision & Mission
-            </span>
-
-            <h2>
-                We know about your potential
-            </h2>
-
-            <p>
-                Our Vision is grow people with love
-            </p>
-            <p>
-                Our Mission is to increase their potential to make them be even better
-            </p>
-
+            <span class="section-label" id="txt-vision_mission_label">Our Vision & Mission</span>
+            <h2 id="txt-vision_mission_title">We know about your potential</h2>
+            <p id="txt-vision_text">Our Vision is grow people with love</p>
+            <p id="txt-mission_text">Our Mission is to increase their potential...</p>
         </section>
 
-
-        <!-- =========================
-             PROFIL SEKOLAH
-        ========================== -->
-
-        <section class="about" id="profil">
-
-            <div class="about-image">
-
-                <img
-                    src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/88/18/f7/chung-ang-high-school.jpg?w=1200&h=-1&s=1"
-                    alt="Profil Sekolah">
-
-            </div>
-
-
-            <div class="about-content">
-
-                <span class="section-label">
-                    About Us
-                </span>
-
-                <h2>
-                    We teach,
-                    We lead
-                </h2>
-
-                <p>
-                    ART AND MUSIC SCHOOL is a Junior and Senior
-                    School who believe in increase people with their potential
-                    and let them to be what they want in Arts and Musics
-                </p>
-
-                <p>
-                    With professional teacher, we commitment to make the best alumni.
-                    Our students has already accepted to Best University before they get graduate.
-                    In R&M School, we trust our student to increase their skills,
-                    grow up, and ready for college and job.
-                </p>
-
-                <a href="about.html" class="text-button">
-                    More →
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             STATISTIK
-        ========================== -->
-
+        <!-- Bagian statistik -->
         <section class="stats">
-
-            <div class="stat">
-
-                <h3>17+</h3>
-
-                <p>
-                    Since
-                </p>
-
-            </div>
-
-
-            <div class="stat">
-
-                <h3>400+</h3>
-
-                <p>
-                    Active Student
-                </p>
-
-            </div>
-
-
-            <div class="stat">
-
-                <h3>70+</h3>
-
-                <p>
-                    Teacher & Staff
-                </p>
-
-            </div>
-
-
-            <div class="stat">
-
-                <h3>20+</h3>
-
-                <p>
-                    School Program
-                </p>
-
-            </div>
-
+            <div class="stat"><h3 id="txt-stat_1_val">17+</h3><p id="txt-stat_1_desc">Since</p></div>
+            <div class="stat"><h3 id="txt-stat_2_val">400+</h3><p id="txt-stat_2_desc">Active Student</p></div>
+            <div class="stat"><h3 id="txt-stat_3_val">70+</h3><p id="txt-stat_3_desc">Teacher & Staff</p></div>
+            <div class="stat"><h3 id="txt-stat_4_val">20+</h3><p id="txt-stat_4_desc">School Program</p></div>
         </section>
-
-
-        <!-- =========================
-             KEGIATAN
-        ========================== -->
-
-        <section class="activities" id="kegiatan">
-
-            <div class="section-title">
-
-                <div>
-
-                    <span class="section-label">
-                        Activity in school
-                    </span>
-
-                    <h2>
-                        Our activity
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="activity-grid">
-
-
-                <!-- Kegiatan utama -->
-
-                <article class="activity large">
-
-                    <img
-                        src="https://cdn.sanity.io/images/9mg9pfm4/production/5bd5e3a1cc2a00055a5917e3d0a4f383b7ff0164-1672x941.webp?rect=0,32,1672,878&w=1200&h=630&fit=crop&auto=format"
-                        alt="Kegiatan Siswa">
-
-                    <div class="activity-info">
-
-                        <span>
-                            Students Activities
-                        </span>
-
-                        <h3>
-                            Teamwork
-                        </h3>
-
-                    </div>
-
-                </article>
-
-
-                <!-- Kegiatan lainnya -->
-
-                <div class="activity-column">
-
-                    <article class="activity small">
-
-                        <img
-                            src="https://tist.school/uploads/media/science-experiments-middle-schoolers68da2cf149224.webp"
-                            alt="Pembelajaran">
-
-                        <div class="activity-info">
-
-                            <span>
-                                Student Activities
-                            </span>
-
-                            <h3>
-                                Science work
-                            </h3>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="activity small">
-
-                        <img
-                            src="https://www.phscheerboosterclub.org/wp-content/uploads/2024/09/teamweb1000.jpg"
-                            alt="Olahraga">
-
-                        <div class="activity-info">
-
-                            <span>
-                                extracurricular
-                            </span>
-
-                            <h3>
-                                Cheerleader, Basketball, Robotics
-                            </h3>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             SPBM
-        ========================== -->
-
-        <section class="spbm" id="spbm">
-
-            <span class="section-label">
-                This is your time to become A&M Student
-            </span>
-
-            <h2>
-                Are you ready to become part of us?
-            </h2>
-
-            <p>
-                Find complete information regarding registration,
-                requirements, the schedule, and the new student
-                admission process.
-            </p>
-
-            <a href="registration.html" class="spbm-button">
-                Look about our registration
-                <span>→</span>
-            </a>
-
-        </section>
-
-
-        <!-- =========================
-             KONTAK
-        ========================== -->
-
-        <section class="contact" id="kontak">
-
-            <div class="contact-heading">
-
-                <span class="section-label">
-                    Call us
-                </span>
-
-                <h2>
-                    We heard what you wanna tell
-                </h2>
-
-            </div>
-
-
-            <div class="contact-info">
-
-                <div class="contact-item">
-
-                    <a href="http://google.com/maps/place/Royal+Academy+of+Dramatic+Art/@51.5218059,-0.1339073,17z/data=!3m1!4b1!4m6!3m5!1s0x48761b2e5cc1d7e5:0xf84eaf2c5a8ffeac!8m2!3d51.5218059!4d-0.1313324!16zL20vMDE1bmw0?entry=ttu&g_ep=EgoyMDI2MDgzMS4wIKXMDSoASAFQAw%3D%3D">
-                    <div>
-                        <strong>
-                            Address
-                        </strong>
-
-                        <p>
-                            62-64 Gower St, London WC1E 6ED, Britania Raya
-                        </p>
-                    </div>
-                    </a>
-                </div>
-
-
-                <div class="contact-item">
-
-                    <span class="contact-number">
-                    </span>
-
-                    <div>
-                        <strong>
-                            Number
-                        </strong>
-
-                        <p>
-                            +62 088888888888
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <span class="contact-number">
-                    </span>
-
-                    <div>
-                        <strong>
-                            Email
-                        </strong>
-
-                        <p>
-                            pedrawr3@gmail.com
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <span class="contact-number">
-                    </span>
-
-                    <div>
-                        <strong>
-                            Operational Hours
-                        </strong>
-
-                        <p>
-                            Monday - Friday
-                            <br>
-                            7.00 AM - 4.00 PM
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
     </main>
 
+    <!-- SCRIPT OTOMATIS AMBIL DATA DARI GOOGLE SHEETS -->
+    <script>
+        // Ganti URL di bawah dengan API URL dari SheetDB Anda!
+        const apiUrl = "https://sheetdb.io/api/v1/dc72sc91pvwqk";
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div class="footer-grid">
-
-
-            <div class="footer-brand">
-
-                <h2>
-                    Art & Music School
-                </h2>
-
-                <p>
-                    Building, increase, and make our student
-                    to ready for great future
-                </p>
-
-            </div>
-
-
-            <div class="footer-menu">
-
-                <h3>
-                    Navigation
-                </h3>
-
-                <a href="#beranda">
-                    Homepage
-                </a>
-
-                <a href="#profil">
-                    Profile
-                </a>
-
-                <a href="#kegiatan">
-                    Activities
-                </a>
-
-                <a href="registration.html">
-                    Registration information
-                </a>
-
-                <a href="https://wa.me/62088299210765">
-                    Contact
-                </a>
-
-            </div>
-
-
-            <div class="footer-social">
-
-                <h3>
-                    Ikuti Kami
-                </h3>
-
-                <a href="https://www.instagram.com/royalacademyofdramaticart/">
-                    Instagram
-                </a>
-
-                <a href="https://www.facebook.com/RoyalAcademyOfDramaticArt/">
-                    Facebook
-                </a>
-
-                <a href="https://www.youtube.com/@rada_london">
-                    YouTube
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026 ART & MUSIC SCHOOL.
-                All Rights Reserved.
-            </p>
-
-            <p>
-                Art & Music School
-            </p>
-
-        </div>
-
-    </footer>
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <script src="script.js"></script>
-
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Data dari Sheets berbentuk array, kita looping untuk mencocokkan "Key" dan "Content"
+                data.forEach(row => {
+                    const key = row.Key; // Kolom Key di spreadsheet
+                    const content = row.Content; // Kolom Content di spreadsheet
+                    
+                    // Cari elemen HTML yang ID-nya cocok dengan key
+                    const element = document.getElementById("txt-" + key);
+                    if (element) {
+                        element.innerText = content;
+                    }
+                });
+            })
+            .catch(error => console.error("Gagal memuat data dari spreadsheet:", error));
+    </script>
 </body>
+</html>
 
 </html>
 ```
