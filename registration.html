@@ -16,7 +16,7 @@
         .logo span{font-family:"DM Sans",sans-serif;font-size:12px;margin-left:5px;color:#f6e6ad}
         .back{font-size:14px;font-weight:600;color:#f6e6ad}
         
-        /* Hero Section dengan Background Image + Gradient */
+        /* Hero Section */
         .hero-wrapper{
             position: relative;
             background-image: 
@@ -58,7 +58,7 @@
         .submit:hover{background:#273b2d}
         .note{margin-top:12px;font-size:11px;color:#85998a;text-align:center}
         
-        /* Style untuk Popup Sukses Berhasil Kirim */
+        /* Style untuk Popup Sukses */
         .success-modal {display:none;position:fixed;inset:0;z-index:1100;background:rgba(39,59,45,.55);backdrop-filter: blur(3px);align-items:center;justify-content:center;padding:20px}
         .success-modal.show {display:flex}
         .success-box {background:#fff;padding:40px;border-radius:14px;text-align:center;max-width:400px;width:100%;border-top:6px solid #3b5e47;box-shadow:0 10px 25px rgba(0,0,0,0.1)}
@@ -122,10 +122,11 @@
             <h2>Request the Registration Form</h2>
             <p class="intro">Please fill in your basic information. Your request will be sent directly to our email.</p>
 
-            <!-- FORM DENGAN AJAX SUBMISSION -->
-            <form id="ajaxForm" action="https://formsubmit.co/ajax/pedrawr3@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="Pendaftaran Siswa Baru - Art & Music School">
-                <input type="hidden" name="_captcha" value="false">
+            <!-- FORM MENGGUNAKAN WEB3FORMS -->
+            <form id="ajaxForm" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Ganti string di bawah dengan Access Key yang Anda dapatkan dari email Web3Forms -->
+                <input type="hidden" name="access_key" value="db9fefcb-82ea-40bb-b5a0-706533b072f5">
+                <input type="hidden" name="subject" value="Pendaftaran Siswa Baru - Art & Music School">
 
                 <div class="field">
                     <label for="name">Full Name</label>
@@ -156,7 +157,7 @@
         </div>
     </div>
 
-    <!-- Modal Pop-up Pesan Sukses Berhasil Kirim -->
+    <!-- Modal Pop-up Sukses Berhasil Kirim -->
     <div class="success-modal" id="successModal">
         <div class="success-box">
             <h3>Thank You!</h3>
@@ -191,7 +192,7 @@
             }
         });
 
-        // Script untuk mengirim data ke email secara diam-diam (Tanpa pindah halaman)
+        // Script Kirim Data via Web3Forms AJAX
         ajaxForm.addEventListener("submit", function(e) {
             e.preventDefault();
             
@@ -199,21 +200,25 @@
             submitBtn.disabled = true;
 
             const formData = new FormData(ajaxForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
 
-            fetch(ajaxForm.action, {
+            fetch("https://api.web3forms.com/submit", {
                 method: "POST",
-                body: formData,
                 headers: {
-                    'Accept': 'application/json'
-                }
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: json
             })
-            .then(response => {
-                if (response.ok) {
-                    modal.classList.remove("show"); // Tutup form pendaftaran
-                    ajaxForm.reset(); // Kosongkan input form
+            .then(async (response) => {
+                let jsonResponse = await response.json();
+                if (response.status == 200) {
+                    modal.classList.remove("show"); // Tutup form
+                    ajaxForm.reset(); // Bersihkan input
                     successModal.classList.add("show"); // Munculkan pop-up sukses
                 } else {
-                    alert("Oops! Terjadi kesalahan saat mengirim data.");
+                    alert(jsonResponse.message || "Terjadi kesalahan.");
                 }
             })
             .catch(error => {
@@ -225,7 +230,6 @@
             });
         });
 
-        // Tombol OK pada pop-up sukses
         closeSuccess.addEventListener("click", () => {
             successModal.classList.remove("show");
         });
